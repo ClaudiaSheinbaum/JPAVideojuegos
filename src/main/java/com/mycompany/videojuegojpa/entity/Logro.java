@@ -1,0 +1,113 @@
+package com.mycompany.videojuegojpa.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import java.io.Serializable;
+import java.util.Objects;
+
+@Entity
+public class Logro implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
+    private String nombre;
+    private int puntos;
+    
+    @ManyToOne()
+    @JoinColumn(name = "videojuego_id")
+    private Videojuego videojuego;
+
+    public Logro() {
+    }
+
+    public Logro(String nombre, int puntos, Videojuego videojuego) {
+        this.nombre = nombre;
+        this.puntos = puntos;
+        this.videojuego = videojuego;
+    }
+
+    public Logro(Long id, String nombre, int puntos, Videojuego videojuego) {
+        this.id = id;
+        this.nombre = nombre;
+        this.puntos = puntos;
+        this.videojuego = videojuego;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
+    }
+
+    public Videojuego getVideojuego() {
+        return videojuego;
+    }
+
+    public void setVideojuego(Videojuego videojuego) {
+        this.videojuego = videojuego;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 11 * hash + Objects.hashCode(this.id);
+        hash = 11 * hash + Objects.hashCode(this.nombre);
+        hash = 11 * hash + this.puntos;
+        hash = 11 * hash + Objects.hashCode(this.videojuego);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Logro other = (Logro) obj;
+        if (this.puntos != other.puntos) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return Objects.equals(this.videojuego, other.videojuego);
+    }
+
+    @Override
+    public String toString() {
+        return "Logro{" + "id=" + id + ", nombre=" + nombre + ", puntos=" + puntos + ", videojuego=" + videojuego + '}';
+    }
+}

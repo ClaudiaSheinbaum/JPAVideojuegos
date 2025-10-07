@@ -1,0 +1,5 @@
+com\mycompany\videojuegojpa\entity\Jugador.class
+com\mycompany\videojuegojpa\VideojuegoJpa.class
+com\mycompany\videojuegojpa\entity\Logro.class
+com\mycompany\videojuegojpa\entity\Direccion.class
+com\mycompany\videojuegojpa\entity\Videojuego.class
